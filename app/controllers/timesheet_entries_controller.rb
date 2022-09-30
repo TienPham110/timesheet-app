@@ -13,16 +13,20 @@ class TimesheetEntriesController < ApplicationController
 
   # POST /timesheet_entries or /timesheet_entries.json
   def create
-    @timesheet_entry = TimesheetEntry.new(timesheet_entry_params)
+    starts_at_secs = timesheet_entry_params[:starts_at].present? ? (timesheet_entry_params[:starts_at].to_time - Date.today.to_time).to_i : nil
+    ends_at_secs = timesheet_entry_params[:ends_at].present? ? (timesheet_entry_params[:ends_at].to_time - Date.today.to_time).to_i : nil
 
-    respond_to do |format|
-      if @timesheet_entry.save
-        format.html { redirect_to timesheet_entries_url, notice: "Timesheet entry was successfully created." }
-        format.json { render :show, status: :created, location: @timesheet_entry }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @timesheet_entry.errors, status: :unprocessable_entity }
-      end
+    @timesheet_entry = TimesheetEntry.new(
+      timesheet_entry_params.merge(
+        starts_at: starts_at_secs,
+        ends_at: ends_at_secs
+      )
+    )
+
+    if @timesheet_entry.save
+      redirect_to timesheet_entries_url, notice: "Timesheet entry was successfully created."
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
