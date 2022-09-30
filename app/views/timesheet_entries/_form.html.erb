@@ -1,4 +1,4 @@
-<%= form_with(model: timesheet_entry, class: "contents") do |form| %>
+<%= form_with(model: timesheet_entry, class: "bg-sky-50 p-4 md:p-8 rounded shadow") do |form| %>
   <% if timesheet_entry.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 p-5 font-medium rounded-lg mt-3 mb-8">
       <h2 class="text-gray-500 mb-2"><%= pluralize(timesheet_entry.errors.count, "error") %> prohibited this timesheet entry from being saved:</h2>
@@ -10,19 +10,19 @@
     </div>
   <% end %>
 
-  <div class="grid grid-cols-2 gap-1 mb-5 items-center">
-    <label for="date" class="form-label text-lg text-slate-600">Date</label>
-    <%= form.date_field :date, class: "form-control py-1 md:py-3 rounded-lg border-2 border-indigo-500 w-full" %>
+  <div class="grid grid-cols-2 gap-1 mb-5 md:mb-8 items-center">
+    <label for="date" class="form-label text-xl text-slate-600">Date</label>
+    <%= form.date_field :date, class: "form-control py-1 md:py-3 rounded-lg border-2 border-cyan-500 w-full" %>
   </div>
 
   <% [:starts_at, :ends_at].each do |field| %>
-    <div class="grid grid-cols-2 gap-1 mb-5 items-center">
-      <%= form.label field, class: "form-label text-lg text-slate-600" %>
-      <%= form.time_field field, class: "form-control py-1 md:py-3 rounded-lg border-2 border-indigo-500 w-full" %>
+    <div class="grid grid-cols-2 gap-1 mb-5 md:mb-8 items-center">
+      <%= form.label field, class: "form-label text-xl text-slate-600" %>
+      <%= form.time_field field, class: "form-control py-1 md:py-3 rounded-lg border-2 border-cyan-500 w-full" %>
     </div>
   <% end %>
 
   <hr class="my-5">
 
-  <%= form.submit t("timesheet_entry.create_button_text"), class: "rounded-lg py-3 px-5 bg-sky-600 text-white inline-block font-medium cursor-pointer" %>
+  <%= form.submit t("timesheet_entry.create_button_text"), class: "rounded-lg py-3 px-5 bg-gray-600 hover:bg-gray-800 text-white inline-block font-medium cursor-pointer" %>
 <% end %>
