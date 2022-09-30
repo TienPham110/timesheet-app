@@ -1,26 +1,26 @@
 <%= form_with(model: timesheet_entry, class: "contents") do |form| %>
   <% if timesheet_entry.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg my-3">
-      <h2><%= pluralize(timesheet_entry.errors.count, "error") %> prohibited this timesheet_entry from being saved:</h2>
-      <ul>
+    <div id="error_explanation" class="bg-red-50 text-red-500 p-5 font-medium rounded-lg my-3">
+      <h2 class="text-gray-500 mb-2"><%= pluralize(timesheet_entry.errors.count, "error") %> prohibited this timesheet entry from being saved:</h2>
+      <ul class="ml-2 list-disc list-inside">
         <% timesheet_entry.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+          <li class="font-normal text-sm"><%= error.full_message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="grid grid-cols-3 gap-1 mb-2 items-center">
-    <label for="date" class="form-label font-bold text-lg">Date</label>
-    <%= form.date_field :date, class: "form-control py-1 md:py-3 col-span-2 rounded-lg border-2 border-indigo-500" %>
+  <div class="grid grid-cols-2 gap-1 mb-5 items-center">
+    <label for="date" class="form-label text-lg text-slate-600">Date</label>
+    <%= form.date_field :date, class: "form-control py-1 md:py-3 rounded-lg border-2 border-indigo-500 w-full" %>
   </div>
-  <div class="grid grid-cols-3 gap-1 mb-2 items-center">
-    <label for="starts_at" class="form-label font-bold text-lg">Starts time</label>
-    <%= form.time_field :starts_at, class: "form-control py-1 md:py-3 col-span-2 rounded-lg border-2 border-indigo-500" %>
+  <div class="grid grid-cols-2 gap-1 mb-5 items-center">
+    <label for="starts_at" class="form-label text-lg text-slate-600">Starts time</label>
+    <%= form.time_field :starts_at, class: "form-control py-1 md:py-3 rounded-lg border-2 border-indigo-500 w-full" %>
   </div>
-  <div class="grid grid-cols-3 gap-1 mb-2 items-center">
-    <label for="ends_at" class="form-label font-bold text-lg">Ends time</label>
-    <%= form.time_field :ends_at, class: "form-control py-1 md:py-3 col-span-2 rounded-lg border-2 border-indigo-500" %>
+  <div class="grid grid-cols-2 gap-1 mb-5 items-center">
+    <label for="ends_at" class="form-label text-lg text-slate-600">Ends time</label>
+    <%= form.time_field :ends_at, class: "form-control py-1 md:py-3 rounded-lg border-2 border-indigo-500 w-full" %>
   </div>
   <hr class="my-5">
   <%= form.submit t("timesheet_entry.create_button_text"), class: "rounded-lg py-3 px-5 bg-sky-600 text-white inline-block font-medium cursor-pointer" %>
