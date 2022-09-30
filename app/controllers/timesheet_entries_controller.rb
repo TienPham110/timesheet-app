@@ -18,13 +18,13 @@ class TimesheetEntriesController < ApplicationController
 
   # POST /timesheet_entries or /timesheet_entries.json
   def create
-    starts_at_secs = timesheet_entry_params[:starts_at].present? ? (timesheet_entry_params[:starts_at].to_time - Date.today.to_time).to_i : nil
-    ends_at_secs = timesheet_entry_params[:ends_at].present? ? (timesheet_entry_params[:ends_at].to_time - Date.today.to_time).to_i : nil
+    starts_at = timesheet_entry_params[:start_time].present? ? (timesheet_entry_params[:start_time].to_time - Date.today.to_time).to_i : nil
+    ends_at = timesheet_entry_params[:finish_time].present? ? (timesheet_entry_params[:finish_time].to_time - Date.today.to_time).to_i : nil
 
     @timesheet_entry = TimesheetEntry.new(
       timesheet_entry_params.merge(
-        starts_at: starts_at_secs,
-        ends_at: ends_at_secs
+        start_time: starts_at,
+        finish_time: ends_at
       )
     )
 
@@ -43,6 +43,6 @@ class TimesheetEntriesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def timesheet_entry_params
-      params.fetch(:timesheet_entry, {}).permit(:date, :starts_at, :ends_at)
+      params.fetch(:timesheet_entry, {}).permit(:date, :start_time, :finish_time)
     end
 end

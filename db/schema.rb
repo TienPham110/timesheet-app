@@ -16,8 +16,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_28_152418) do
 
   create_table "timesheet_entries", force: :cascade do |t|
     t.date "date"
-    t.integer "starts_at"
-    t.integer "ends_at"
+    t.integer "start_time"
+    t.integer "finish_time"
     t.float "caculated_ammount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

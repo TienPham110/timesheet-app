@@ -35,7 +35,7 @@
                 <span class="text-gray-900"> <%= "#{timesheet.date.strftime("%d/%m/%Y")}: " %> </span>
                 <span class="text-orange-900">
                   <%=
-                    "#{Time.at(timesheet.starts_at).utc.strftime("%H:%M")} - #{Time.at(timesheet.ends_at).utc.strftime("%H:%M")}"
+                    "#{Time.at(timesheet.start_time).utc.strftime("%H:%M")} - #{Time.at(timesheet.finish_time).utc.strftime("%H:%M")}"
                   %>
                 </span>
                 <span>&nbsp<%= "$#{timesheet.caculated_ammount}" %></span>

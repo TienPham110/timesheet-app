@@ -15,10 +15,14 @@
     <%= form.date_field :date, class: "form-control py-1 md:py-3 rounded-lg border-2 border-cyan-500 w-full" %>
   </div>
 
-  <% [:starts_at, :ends_at].each do |field| %>
+  <% [:start_time, :finish_time].each do |field| %>
     <div class="grid grid-cols-2 gap-1 mb-5 md:mb-8 items-center">
       <%= form.label field, class: "form-label text-xl text-slate-600" %>
-      <%= form.time_field field, class: "form-control py-1 md:py-3 rounded-lg border-2 border-cyan-500 w-full" %>
+      <%=
+        form.time_field field,
+        value: timesheet_entry.send(field) && Time.at(timesheet_entry.send(field)).utc.strftime("%H:%M"),
+        class: "form-control py-1 md:py-3 rounded-lg border-2 border-cyan-500 w-full"
+      %>
     </div>
   <% end %>
 
