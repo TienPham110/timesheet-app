@@ -3,7 +3,12 @@ class TimesheetEntriesController < ApplicationController
 
   # GET /timesheet_entries or /timesheet_entries.json
   def index
-    @timesheet_entries = TimesheetEntry.all
+    @timesheet_entries = TimesheetEntry
+      .all
+      .paginate(
+        page: params[:page],
+        per_page: DEFAULT_PAGE_SIZE
+      )
   end
 
   # GET /timesheet_entries/new
