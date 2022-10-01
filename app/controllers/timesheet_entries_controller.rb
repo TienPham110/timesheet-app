@@ -1,5 +1,5 @@
 class TimesheetEntriesController < ApplicationController
-  before_action :set_timesheet_entry, only: %i[ show edit update destroy ]
+  before_action :set_timesheet_entry, only: :update
 
   SECONDS_IN_AN_HOUR = 3600
 
