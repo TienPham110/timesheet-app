@@ -1,10 +1,15 @@
 class TimesheetEntry < ApplicationRecord
   validates :date, :start_time, :finish_time, presence: { message: "is required" }
-  validates :date, comparison: { less_than_or_equal_to: Date.today, message: "can't be in the future" }, :if => Proc.new { |o| o.errors.empty? }
-  validates :finish_time, comparison: { greater_than_or_equal_to: :start_time, message: "can't be before start time" }
+  validates :date, comparison: { less_than_or_equal_to: Date.today, message: "can't be in the future" },
+    :if => Proc.new { |o| o.errors[:date].blank? }
+  validates :finish_time, comparison: { greater_than_or_equal_to: :start_time, message: "can't be before start time" },
+    :if => Proc.new { |o| o.errors[:start_time].blank? && o.errors[:finish_time].blank? }
   validate :cannot_overllap_timesheet
 
-  scope :in_range, -> range { where(start_time: range).or(where(finish_time: range)) }
+  scope :by_overlapping, -> range {
+    where(start_time: range).or(where(finish_time: range))
+      .or(where("start_time <= ? AND finish_time >= ? ", range.begin, range.end))
+  }
   scope :by_date, -> date { where(date: date) }
 
   RATE = { # In dollar $
@@ -26,8 +31,8 @@ class TimesheetEntry < ApplicationRecord
 
       overlaps = TimesheetEntry
         .by_date(date)
-        .in_range(start_time..finish_time)
+        .by_overlapping(start_time..finish_time)
 
-      errors.add(:base, "Can't have overlapping timesheet entries") unless overlaps.empty?
+        errors.add(:base, "Can't have overlapping timesheet entries") unless overlaps.empty?
     end
 end
