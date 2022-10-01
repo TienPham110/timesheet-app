@@ -1,4 +1,4 @@
-<%= form_with(model: timesheet_entry, class: "bg-rose-50 p-4 md:p-8 rounded shadow") do |form| %>
+<%= form_with(model: timesheet_entry, class: "bg-slate-50 p-4 md:p-8 rounded shadow") do |form| %>
   <% if timesheet_entry.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 p-5 font-medium rounded-lg mt-3 mb-8">
       <h2 class="text-gray-500 mb-2"><%= pluralize(timesheet_entry.errors.count, "error") %> prohibited this timesheet entry from being saved:</h2>
