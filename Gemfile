@@ -53,6 +53,7 @@ gem "bootsnap", require: false
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  gem 'rspec-rails', '~> 4.1.0'
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
 end
 
@@ -72,6 +73,8 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+  gem 'factory_bot_rails'
 end
 
 gem "will_paginate", "~> 3.3"
+gem "rails-controller-testing", "~> 1.0"
