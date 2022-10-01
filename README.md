@@ -53,17 +53,17 @@ RAILS_ENV=test bundle exec rails test
 ```
 
 # API Endpoints
-  - GET /timesheet_entries # => get all timesheet entries
-  - GET /timesheet_entries/new # => get page for new timesheet entry
-  - POST /timesheet_entries # => create new timesheet entry
+  - GET `/timesheet_entries` # get all timesheet entries
+  - GET `/timesheet_entries/new` # get page for new timesheet entry
+  - POST `/timesheet_entries` # create new timesheet entry
 
 # Database structure
   - All timesheet entries are stored in the `timesheet_entries` table (model: TimesheetEntry).
   - With these fields:
-    `date` (date) # required
-    `start_time` (integer) is store as nth seconds of a day - # required
-    `finish_time` (integer) is store as nth seconds of a day - # required
-    `caculated_ammount` (float) is calculated from date, start_time and finish_time fields. # See TimesheetEntriesController#caculated_money
+    `date` (date) # required \
+    `start_time` (integer) is store as nth seconds of a day # required \
+    `finish_time` (integer) is store as nth seconds of a day # required \
+    `caculated_ammount` (float) is calculated from date, start_time and finish_time fields. # See TimesheetEntriesController#caculated_money \
 
 # Others
   Some terms are used in this project:
