@@ -53,9 +53,9 @@ RAILS_ENV=test bundle exec rails test
 ```
 
 # API Endpoints
-  GET /timesheet_entries # => get all timesheet entries
-  GET /timesheet_entries/new # => get page for new timesheet entry
-  POST /timesheet_entries # => create new timesheet entry
+  - GET /timesheet_entries # => get all timesheet entries
+  - GET /timesheet_entries/new # => get page for new timesheet entry
+  - POST /timesheet_entries # => create new timesheet entry
 
 # Database structure
   - All timesheet entries are stored in the `timesheet_entries` table (model: TimesheetEntry).
