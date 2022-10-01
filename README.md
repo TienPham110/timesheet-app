@@ -59,7 +59,7 @@ RAILS_ENV=test bundle exec rails test
 
 # Database structure
   - All timesheet entries are stored in the `timesheet_entries` table (model: TimesheetEntry).
-  - With these fields:
+  - With these fields: \
     `date` (date) # required \
     `start_time` (integer) is store as nth seconds of a day # required \
     `finish_time` (integer) is store as nth seconds of a day # required \
