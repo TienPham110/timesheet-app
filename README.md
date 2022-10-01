@@ -58,8 +58,8 @@ RAILS_ENV=test bundle exec rails test
   POST /timesheet_entries # => create new timesheet entry
 
 # Database structure
-  All timesheet entries are stored in the `timesheet_entries` table (model: TimesheetEntry).
-  With these fields:
+  - All timesheet entries are stored in the `timesheet_entries` table (model: TimesheetEntry).
+  - With these fields:
     `date` (date) # required
     `start_time` (integer) is store as nth seconds of a day - # required
     `finish_time` (integer) is store as nth seconds of a day - # required
@@ -68,8 +68,8 @@ RAILS_ENV=test bundle exec rails test
 # Others
   Some terms are used in this project:
 
-  Even days: are monday, wednesday, friday
-  Odd days: are tuesday and thursday
-  Weekend: are saturday and sunday
-  Inside: is the time from 5am to 5pm for even days and 7am to 7pm for odd days
-  Outside: is the time outside the inside time
+  - Even days: are monday, wednesday, friday
+  - Odd days: are tuesday and thursday
+  - Weekend: are saturday and sunday
+  - Inside: is the time from 5am to 5pm for even days and 7am to 7pm for odd days
+  - Outside: is the time outside the inside time
