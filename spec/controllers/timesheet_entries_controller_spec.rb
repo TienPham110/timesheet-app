@@ -11,7 +11,7 @@ RSpec.describe TimesheetEntriesController, type: :controller do
       it "responds successfully" do
         get	:index
         expect(response).to	have_http_status "200"
-        expect(assigns(:timesheet_entries).pluck(:id)).to eq(TimesheetEntry.all.order(created_at: :desc).pluck(:id))
+        expect(assigns(:timesheet_entries).ids).to eq(TimesheetEntry.all.order(created_at: :desc).ids)
       end
 
       it "renders the :index view" do
