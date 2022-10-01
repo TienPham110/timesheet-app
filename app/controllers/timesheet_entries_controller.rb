@@ -3,7 +3,7 @@ class TimesheetEntriesController < ApplicationController
 
   SECONDS_IN_AN_HOUR = 3600
 
-  # GET /timesheet_entries or /timesheet_entries.json
+  # GET /timesheet_entries
   def index
     @timesheet_entries = TimesheetEntry
       .all
@@ -19,7 +19,7 @@ class TimesheetEntriesController < ApplicationController
     @timesheet_entry = TimesheetEntry.new
   end
 
-  # POST /timesheet_entries or /timesheet_entries.json
+  # POST /timesheet_entries
   def create
     starts_at = timesheet_entry_params[:start_time].present? ?
       (timesheet_entry_params[:start_time].to_time - Date.today.to_time).to_i
@@ -32,7 +32,7 @@ class TimesheetEntriesController < ApplicationController
       timesheet_entry_params.merge(
         start_time: starts_at,
         finish_time: ends_at,
-        caculated_ammount: caculated_money(timesheet_entry_params[:date].to_date, starts_at, ends_at)
+        caculated_ammount: caculated_money(timesheet_entry_params[:date]&.to_date, starts_at, ends_at)
       )
     )
 
